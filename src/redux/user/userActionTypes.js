@@ -1,0 +1,5 @@
+const ACTION_TYPES = {
+    SET_CURRENT_USER: 'SET_CURRENT_USER'
+}
+
+export default ACTION_TYPES
