@@ -16,7 +16,7 @@ class ShopPage extends React.Component {
     render() {
         const { collections } = this.state
 
-        return <div class='shop-page'>
+        return <div className='shop-page'>
             {
                 collections.filter((item, indx) => indx < 4).map(({id, ...collection}) => (
                     <CollectionPreview id={id} {...collection}></CollectionPreview>
