@@ -15,6 +15,16 @@ const addItemToCart = (cartItems, cartItemToAdd) => {
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
 }
 
+const removeItem = (cartItems, cartItemToRemove) => {
+    const existingCartItem = cartItems.find(item => item.id === cartItemToRemove.id)
+
+    if(existingCartItem.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+    }
+
+    return cartItems.map(cartItem => cartItem.id === cartItemToRemove.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem)
+}
+
 const cartReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case CartActionTypes.TOGGLE_CART_HIDDEN:
@@ -26,6 +36,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload)
+            }
+        case CartActionTypes.REMOVE_ITEM: 
+            return {
+                ...state,
+                cartItems: removeItem(state.cartItems, action.payload)
+            }
+        case CartActionTypes.CLEAR_ITEM_FROM_CART:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
             }
         default:
             return state
