@@ -7,9 +7,9 @@ import { HomePageContainer } from './styles'
 import './style.scss'
 
 const HomePage = () => (
-    <HomePageContainer>
-        <Directory />
-    </HomePageContainer>
+  <HomePageContainer>
+    <Directory />
+  </HomePageContainer>
 )
 
 export default HomePage
