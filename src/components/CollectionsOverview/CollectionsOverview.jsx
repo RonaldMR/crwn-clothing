@@ -6,17 +6,17 @@ import { selectCollectionsForPreview } from '../../redux/shop/shopSelectors'
 
 import CollectionPreview from '../CollectionPreview'
 
-import './style.scss'
+import { Container } from './styles'
 
 const CollectionsOverview = ({ collections }) => {
   return (
-    <div className="collections-overview">
+    <Container>
       {collections
         .filter((item, indx) => indx < 4)
         .map(({ id, ...collection }) => (
           <CollectionPreview id={id} {...collection}></CollectionPreview>
         ))}
-    </div>
+    </Container>
   )
 }
 
